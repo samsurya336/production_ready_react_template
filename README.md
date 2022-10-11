@@ -1,4 +1,3 @@
-# production_ready_react_template
 # Coding Standards and Rules
 
 ## The Mind-set
@@ -221,7 +220,7 @@ variable name.
 const Car = {
   carMake: "Honda",
   carModel: "Accord",
-  carColor: "Blue",
+  carColor: "Blue"
 };
 
 function paintCar(car, color) {
@@ -235,7 +234,7 @@ function paintCar(car, color) {
 const Car = {
   make: "Honda",
   model: "Accord",
-  color: "Blue",
+  color: "Blue"
 };
 
 function paintCar(car, color) {
@@ -324,7 +323,7 @@ createMenu({
   title: "Foo",
   body: "Bar",
   buttonText: "Baz",
-  cancellable: true,
+  cancellable: true
 });
 ```
 
@@ -500,7 +499,7 @@ function showDeveloperList(developers) {
     const data = {
       expectedSalary,
       experience,
-      githubLink,
+      githubLink
     };
 
     render(data);
@@ -515,7 +514,7 @@ function showManagerList(managers) {
     const data = {
       expectedSalary,
       experience,
-      portfolio,
+      portfolio
     };
 
     render(data);
@@ -533,7 +532,7 @@ function showEmployeeList(employees) {
 
     const data = {
       expectedSalary,
-      experience,
+      experience
     };
 
     switch (employee.type) {
@@ -561,7 +560,7 @@ const menuConfig = {
   title: null,
   body: "Bar",
   buttonText: null,
-  cancellable: true,
+  cancellable: true
 };
 
 function createMenu(config) {
@@ -582,7 +581,7 @@ const menuConfig = {
   title: "Order",
   // User did not include 'body' key
   buttonText: "Send",
-  cancellable: true,
+  cancellable: true
 };
 
 function createMenu(config) {
@@ -591,7 +590,7 @@ function createMenu(config) {
       title: "Foo",
       body: "Bar",
       buttonText: "Baz",
-      cancellable: true,
+      cancellable: true
     },
     config
   );
@@ -786,20 +785,20 @@ Favor this style of programming when you can.
 const programmerOutput = [
   {
     name: "Uncle Bobby",
-    linesOfCode: 500,
+    linesOfCode: 500
   },
   {
     name: "Suzie Q",
-    linesOfCode: 1500,
+    linesOfCode: 1500
   },
   {
     name: "Jimmy Gosling",
-    linesOfCode: 150,
+    linesOfCode: 150
   },
   {
     name: "Gracie Hopper",
-    linesOfCode: 1000,
-  },
+    linesOfCode: 1000
+  }
 ];
 
 let totalOutput = 0;
@@ -815,20 +814,20 @@ for (let i = 0; i < programmerOutput.length; i++) {
 const programmerOutput = [
   {
     name: "Uncle Bobby",
-    linesOfCode: 500,
+    linesOfCode: 500
   },
   {
     name: "Suzie Q",
-    linesOfCode: 1500,
+    linesOfCode: 1500
   },
   {
     name: "Jimmy Gosling",
-    linesOfCode: 150,
+    linesOfCode: 150
   },
   {
     name: "Gracie Hopper",
-    linesOfCode: 1000,
-  },
+    linesOfCode: 1000
+  }
 ];
 
 const totalOutput = programmerOutput.reduce(
@@ -1102,7 +1101,7 @@ function makeBankAccount() {
   // ...
 
   return {
-    balance: 0,
+    balance: 0
     // ...
   };
 }
@@ -1132,7 +1131,7 @@ function makeBankAccount() {
   return {
     // ...
     getBalance,
-    setBalance,
+    setBalance
   };
 }
 
@@ -1170,7 +1169,7 @@ function makeEmployee(name) {
   return {
     getName() {
       return name;
-    },
+    }
   };
 }
 
@@ -1728,7 +1727,7 @@ class DOMTraverser {
 
 const $ = new DOMTraverser({
   rootNode: document.getElementsByTagName("body"),
-  animationModule() {}, // Most of the time, we won't need to animate when traversing.
+  animationModule() {} // Most of the time, we won't need to animate when traversing.
   // ...
 });
 ```
@@ -1762,8 +1761,8 @@ class DOMTraverser {
 const $ = new DOMTraverser({
   rootNode: document.getElementsByTagName("body"),
   options: {
-    animationModule() {},
-  },
+    animationModule() {}
+  }
 });
 ```
 
@@ -2369,7 +2368,7 @@ proper indentation and formatting give the visual structure to your code.
 ////////////////////////////////////////////////////////////////////////////////
 $scope.model = {
   menu: "foo",
-  nav: "bar",
+  nav: "bar"
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2385,7 +2384,7 @@ const actions = function () {
 ```javascript
 $scope.model = {
   menu: "foo",
-  nav: "bar",
+  nav: "bar"
 };
 
 const actions = function () {
