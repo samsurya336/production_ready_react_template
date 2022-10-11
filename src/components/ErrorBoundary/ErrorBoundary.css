@@ -1,0 +1,9 @@
+.error-fallback-image-height {
+	height: 156px;
+}
+
+@media screen and (min-width: 576px) {
+	.error-fallback-image-height {
+		height: 250px;
+	}
+}

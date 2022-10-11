@@ -1,0 +1,1 @@
+export const SOME_CONST_STRING : string = "SOME_CONST_STRING";

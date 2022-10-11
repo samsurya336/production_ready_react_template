@@ -3,11 +3,10 @@ import React from 'react'
 type Props = {
   exampleProp : string
 }
-
-function Home({exampleProp}: Props) {
+function Modal({exampleProp}: Props) {
   return (
-    <div>Home</div>
+    <div>Modal</div>
   )
 }
 
-export default Home
+export default Modal
