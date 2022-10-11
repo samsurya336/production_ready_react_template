@@ -2393,3 +2393,112 @@ const actions = function () {
 ```
 
 **[⬆ back to top](#table-of-contents)**
+
+<br/><br/>
+
+# REACT CLEAN DESIGN PATTERN
+
+### File structure
+
+```sh
+src
+|
+|-- assets  
+|   |-- icons
+|   |-- fonts
+|   |-- images
+|   |
+|-- global_lib
+|   |-- assets  
+|   |   |-- icons
+|   |   |-- fonts
+|   |   |-- images
+|   |-- components
+|   |-- hooks
+|   |-- services
+|   |-- utils
+|   |
+|-- components
+|   |-- ErrorBoundary
+|   |   |-- index.js
+|   |   |-- useWorker.js
+|   |   |-- ErrorBoundary.spec.js
+|   |-- InputTextFiled
+|   |   |-- index.js
+|   |   |-- useWorker.js
+|   |   |-- InputTextFiled.spec.js
+|   |
+|-- screens
+|   |-- Home
+|   |   |-- components
+|   |   |   |-- HomeCard.js
+|   |   |   |-- HomeAction.js
+|   |   |-- hooks.
+|   |   |   |-- useWorker.js
+|   |   |   |-- usecardAccess.js 
+|   |   |-- index.js
+|   |   |
+|   |-- Profile
+|   |   |-- components
+|   |   |   |-- ProfileTile.js
+|   |   |   |-- EditProfile.js
+|   |   |-- hooks.
+|   |   |   |-- useWorker.js
+|   |   |   |-- useProfile.js 
+|   |   |-- index.js
+|   |
+|-- routes
+|   |-- Private.js
+|   |-- Public.js
+|   |-- index.js
+|   |
+|-- hooks
+|   |-- useAuth.js
+|   |-- useProfile.js
+|   |
+|-- services
+|   |-- apis
+|   |   |-- auth.js
+|   |   |-- profile.js
+|   |   |-- orders.js
+|   |-- storage
+|   |
+|-- configs
+|   |-- storage.dev.js
+|   |-- database.dev.js
+|   |
+|-- store
+|   |-- auth
+|   |   |-- workers.js
+|   |   |-- reducer.js
+|   |-- profile
+|   |   |-- workers.js
+|   |   |-- reducer.js
+|   |-- order
+|   |   |-- workers.js
+|   |   |-- reducer.js
+|   |-- rootStore.js
+|   |-- rootReducer.js
+| 
+```
+<br/>
+
+### Data Flows
+- user click Login <button>Button</button>
+- loginFunction extracted from useWorker [hook] is called.
+- loginFunction dispatch action for LOGIN [auth] user.
+- action catched by saga worker [auth].
+- saga worker involves business flow logics.
+  - > worker will be the one which trigger to show 
+  - Is valid user.
+  - Is user already logged-in.
+  - Is user does not have an account.
+
+
+
+<br/>
+
+### Data Flows & Access Levels
+
+```sh
+```
