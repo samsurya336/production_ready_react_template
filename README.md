@@ -5,13 +5,13 @@
 > A fix might get the system back up and running again, but a solution will prevent the failure from happening again in the future
 
 - Understand the actual problem and have a mind set of finding an optimized solution rather than Fixing it.
-- Always ask "Is there is any better solution than this ?" & decently there will be.
+- Always ask "Is there is any better solution than this ?" & definitely there will be.
   <br/>
   <br/>
 
 ## Why coding standards are important :
 
-In simple terms Software product with No Rules & standards is equivalent to a country/city without Rules & Regulations.
+In simple terms Software product with No Rules & standards is equivalent to a country/city/highway without Rules & Regulations.
 
 - The Importance of Quality Standards in Software Development :
   - Maintains Business Reputation
