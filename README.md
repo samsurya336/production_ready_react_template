@@ -21,6 +21,7 @@ In simple terms Software product with No Rules & standards is equivalent to a co
     <br/>
     <br/>
 - For client/customer/user -
+  - code quality drives product quality. High-quality code is less likely to have bugs, which are a major driver of user complaints. Code quality has also been correlated to commercial success and reduced security vulnerabilities. Code quality certainly isn’t the only factor in a product’s performance on the market, and it likely isn’t the most important factor either. But even the most competent organizations will struggle to market a product that’s bug-ridden or vulnerable to hacks.
   - Less buggy
   - Highly performant software
   - Software with little to no limitations
@@ -36,12 +37,11 @@ In simple terms Software product with No Rules & standards is equivalent to a co
   - It improves readability, and maintainability of the code and it reduces complexity also.
   - It helps in code reuse and helps to detect error easily.
   - It promotes sound programming practices and increases efficiency of the programmers.
+  - most of all, it is there to improve the efficiency of the developers. You want your development team to add new features. You need them to work with clean code and not waste time dealing with five-year-old outdated functions.
     <br/>
     <br/>
 
 # clean-code-javascript
-
-REF > https://github.com/ryanmcdermott/clean-code-javascript#table-of-contents
 
 ## Table of Contents
 
@@ -2403,13 +2403,16 @@ const actions = function () {
 ```sh
 src
 |
-|-- assets  
+|-- assets
+|   |
 |   |-- icons
 |   |-- fonts
 |   |-- images
 |   |
+|   |
 |-- global_lib
-|   |-- assets  
+|   |
+|   |-- assets
 |   |   |-- icons
 |   |   |-- fonts
 |   |   |-- images
@@ -2418,43 +2421,57 @@ src
 |   |-- services
 |   |-- utils
 |   |
+|   |
 |-- components
+|   |
 |   |-- ErrorBoundary
-|   |   |-- index.js
-|   |   |-- useWorker.js
+|   |   |-- index.js # only contains pure JSX & no states, logics etc
+|   |   |-- controller.hook.js # contains everything need to control and change JSX component
 |   |   |-- ErrorBoundary.spec.js
 |   |-- InputTextFiled
 |   |   |-- index.js
-|   |   |-- useWorker.js
+|   |   |-- controller.hook.js
 |   |   |-- InputTextFiled.spec.js
 |   |
+|   |
 |-- screens
+|   |
 |   |-- Home
 |   |   |-- components
-|   |   |   |-- HomeCard.js
-|   |   |   |-- HomeAction.js
-|   |   |-- hooks.
-|   |   |   |-- useWorker.js
-|   |   |   |-- usecardAccess.js 
-|   |   |-- index.js
+|   |   |   |-- HomeCard
+|   |   |   |   |-- hooks.js # contains all necessary hook & everything need to control and change HomeCard JSX component
+|   |   |   |   |-- index.js # only contains pure HomeCard JSX & no states, logics etc
+|   |   |   |-- homeAction
+|   |   |   |   |-- hooks.js
+|   |   |   |   |-- index.js
+|   |   |-- index.js # only contains pure Home[screen] JSX & no states, logics etc
+|   |   |-- styles.css
+|   |   |-- controller.hook.js # contains all necessary hook & everything need to control and change Home[screen] JSX component
 |   |   |
 |   |-- Profile
 |   |   |-- components
-|   |   |   |-- ProfileTile.js
-|   |   |   |-- EditProfile.js
-|   |   |-- hooks.
-|   |   |   |-- useWorker.js
-|   |   |   |-- useProfile.js 
+|   |   |   |-- ProfileTile
+|   |   |   |   |-- hooks.js
+|   |   |   |   |-- index.js
+|   |   |   |-- EditProfile
+|   |   |   |   |-- hooks.js
+|   |   |   |   |-- index.js
 |   |   |-- index.js
+|   |   |-- styles.css
+|   |   |-- controller.hook.js
+|   |   |
+|   |
 |   |
 |-- routes
 |   |-- Private.js
 |   |-- Public.js
 |   |-- index.js
 |   |
+|   |
 |-- hooks
 |   |-- useAuth.js
 |   |-- useProfile.js
+|   |
 |   |
 |-- services
 |   |-- apis
@@ -2463,11 +2480,15 @@ src
 |   |   |-- orders.js
 |   |-- storage
 |   |
+|   |
 |-- configs
+|   |
 |   |-- storage.dev.js
 |   |-- database.dev.js
 |   |
+|   |
 |-- store
+|   |
 |   |-- auth
 |   |   |-- workers.js
 |   |   |-- reducer.js
@@ -2479,26 +2500,45 @@ src
 |   |   |-- reducer.js
 |   |-- rootStore.js
 |   |-- rootReducer.js
-| 
+|
 ```
+
 <br/>
 
 ### Data Flows
+
 - user click Login <button>Button</button>
-- loginFunction extracted from useWorker [hook] is called.
+- loginFunction extracted from useController [hook] is called.
 - loginFunction dispatch action for LOGIN [auth] user.
-- action catched by saga worker [auth].
-- saga worker involves business flow logics.
-  - > worker will be the one which trigger to show 
+- Saga worker [auth] catches the action.
+- saga worker involves business level logics.
+  - > worker will be the one which trigger to validate all business logic and call access all services. EX below
   - Is valid user.
   - Is user already logged-in.
   - Is user does not have an account.
-
-
+- After saga finished its work it then dispatch the final results to Reducer to put it in store
+- > Reducer will not & should not have any sorts of logic, it's only responsibility is to put given data to store.
+- UI listens to store changes, when ever store has been changed UI reacts & re-render to it.
 
 <br/>
 
-### Data Flows & Access Levels
+### Access Levels & Restrictions
 
-```sh
-```
+- screens / components index.js file should not have any component level behavioral or business logic and should not import any services or utils. The only this that screen / component can import is UI related things Example : Other components, assets, fonts and css.
+- controller.hook.js should be the one which imports utils, saga workers & have hooks and states init to do component level behavioral or business logic.
+
+<br/>
+<br/>
+
+## References
+
+- <a href="https://martinfowler.com/articles/is-quality-worth-cost.html" >Is High Quality Software Worth the Cost ?</a>
+- <a href="https://github.com/ryanmcdermott/clean-code-javascript#table-of-contents" >Clean-code-js</a>
+- <a href="https://github.com/alan2207/bulletproof-react" >Bullet prof react</a>
+- <a href="https://youtu.be/TqfbAXCCVwE" >Scalable Architecture Front-end [conference]</a>
+- <a href="https://www.youtube.com/watch?v=jmcx3b78V8s" >Scalable Architecture Front-end [conference] 2</a>
+- <a href="https://dl.acm.org/doi/abs/10.1145/3197231.3198447">code quality reflect the ratings of apps</a>
+- <a href="https://beta.reactjs.org/" >Official React docs</a>
+
+<br/>
+<br/>
