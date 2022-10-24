@@ -16,7 +16,20 @@ function useController({exampleProp}: Props) {
   }
   return {
     getExState,
-    setExState
+    setExState,
+
+    render : {
+
+    },
+    data : {
+
+    },
+    actions : {
+
+    },
+    callBacks : {
+      
+    }
   }
 }
 
